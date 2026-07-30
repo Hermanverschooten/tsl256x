@@ -1,7 +1,7 @@
 defmodule TSL256X.MIXPROJECT do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
   @description "Driver for TSL256x family of Light-to-digital convertors"
   @source_url "https://github.com/Hermanverschooten/tsl256x"
 
@@ -15,8 +15,13 @@ defmodule TSL256X.MIXPROJECT do
       docs: docs(),
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
-      deps: deps(),
-      preferred_cli_env: %{
+      deps: deps()
+    ]
+  end
+
+  def cli do
+    [
+      preferred_envs: %{
         docs: :docs,
         "hex.publish": :docs,
         "hex.build": :docs
@@ -38,7 +43,8 @@ defmodule TSL256X.MIXPROJECT do
         "mix.exs",
         "README.md",
         "LICENSE",
-        "CHANGELOG.md"
+        "CHANGELOG.md",
+        "usage-rules.md"
       ],
       licenses: ["Apache-2.0"],
       links: %{"GitHub" => @source_url}
@@ -49,7 +55,7 @@ defmodule TSL256X.MIXPROJECT do
   defp deps do
     [
       {:ex_doc, "~> 0.22", only: :docs, runtime: false},
-      {:circuits_i2c, "~> 2.0.6"}
+      {:circuits_i2c, "~> 2.1"}
     ]
   end
 
